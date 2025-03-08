@@ -172,7 +172,6 @@ const Registration = () => {
                   {errors.email && <div className="invalid-feedback">{errors.email}</div>}
                 </div>
 
-                {/* Password */}
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">
                     Password
@@ -190,10 +189,8 @@ const Registration = () => {
                   {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                 </div>
 
-                {/* General Error message */}
                 {errors.general && <div className="alert alert-danger">{errors.general}</div>}
 
-                {/* Submit button */}
                 <div className="d-grid">
                   <button type="submit" className="btn btn-primary">
                     Register
