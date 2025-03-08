@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
-  // Fetch users when the component mounts
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -15,7 +14,7 @@ const Dashboard = () => {
         const data = await response.json();
 
         if (response.ok) {
-          setUsers(data.users); // Store users in state
+          setUsers(data.users);
         } else {
           setError('Failed to fetch users');
         }
@@ -24,25 +23,21 @@ const Dashboard = () => {
       }
     };
 
-    fetchUsers(); // Call function to fetch users
-  }, []); // Empty dependency array makes sure it runs once when component mounts
+    fetchUsers();
+  }, []);
 
-  // Function to navigate to the Edit page (UpdateUser)
   const handleEdit = (id) => {
-    navigate(`/update-user/${id}`); // Redirect to UpdateUser page with user ID
+    navigate(`/update-user/${id}`);
   };
 
-  // Function to handle logout
   const handleLogout = () => {
-    // Optionally, clear user session or token here
-    navigate('/register'); // Redirect to login page on logout
+    navigate('/register');
   };
 
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">User Dashboard</h2>
-
-      {/* Logout Button */}
+    
       <button
         className="btn btn-danger btn-sm position-absolute top-0 end-0 m-3"
         onClick={handleLogout}
