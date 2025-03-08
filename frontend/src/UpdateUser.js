@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const UpdateUser = () => {
-  const { id } = useParams(); // Get the user ID from the URL
+  const { id } = useParams();
   const [user, setUser] = useState({ firstName: '', lastName: '', email: '' });
   const [errors, setErrors] = useState({ firstName: '', lastName: '', email: '' });
   const [error, setError] = useState('');
@@ -25,30 +25,27 @@ const UpdateUser = () => {
       }
     };
 
-    fetchUser(); // Fetch user details when the component mounts
+    fetchUser();
   }, [id]);
 
-  // Handle form submission for updating user information
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault();
 
-    // Validate the fields before submitting
     const isValid = validateForm();
     if (!isValid) {
-      return; // Prevent the form submission if validation fails
+      return;
     }
 
     try {
-      // Send PUT request to update the user
       const response = await fetch(`http://localhost:5000/users/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user), // Send updated user data
+        body: JSON.stringify(user),
       });
 
       if (response.ok) {
         alert('User updated successfully');
-        navigate('/dashboard'); // Redirect to dashboard after successful update
+        navigate('/dashboard');
       } else {
         const errorData = await response.json();
         setError(errorData.error || 'Failed to update user');
@@ -58,13 +55,11 @@ const UpdateUser = () => {
     }
   };
 
-  // Handle input changes to update the user state
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: value }); // Update the corresponding field in state
+    setUser({ ...user, [name]: value });
   };
 
-  // Validate the form fields
   const validateForm = () => {
     const formErrors = { firstName: '', lastName: '', email: '' };
     let isValid = true;
