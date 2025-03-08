@@ -103,12 +103,11 @@ const Login = () => {
                     placeholder="Email"
                     value={formData.email}
                     onChange={handleChange}
-                    onBlur={handleBlur}  // Trigger validation on blur
+                    onBlur={handleBlur}
                   />
                   {errors.email && <div className="invalid-feedback">{errors.email}</div>}
                 </div>
 
-                {/* Password Field */}
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">
                     Password
@@ -121,15 +120,13 @@ const Login = () => {
                     placeholder="Password"
                     value={formData.password}
                     onChange={handleChange}
-                    onBlur={handleBlur}  // Trigger validation on blur
+                    onBlur={handleBlur}
                   />
                   {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                 </div>
 
-                {/* General Error Message */}
                 {generalError && <div className="alert alert-danger">{generalError}</div>}
 
-                {/* Submit Button */}
                 <div className="d-grid">
                   <button type="submit" className="btn btn-primary">
                     Login
