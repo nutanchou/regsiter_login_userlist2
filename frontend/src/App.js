@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom'; // No need to import BrowserRouter here
+import { Route, Routes } from 'react-router-dom';
 import Registration from './Registration';
 import Login from './Login';
 import Dashboard from './Dashboard';
